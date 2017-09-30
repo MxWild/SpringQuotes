@@ -18,14 +18,24 @@ public class Quote {
     @Column(name = "ADDED_DATE")
     private Date addedDate;
 
+    // TODO пока делаем стрингами, потом будет объекты
+    private String author;
 
-    private Author author;
+    private String category;
 
-    private Category category;
+    /*private Author author;
+
+    private Category category;*/
 
     public Quote() {}
 
-    public Quote(String textOfQuote, Author author, Category category) {
+    /*public Quote(String textOfQuote, Author author, Category category) {
+        this.textOfQuote = textOfQuote;
+        this.author = author;
+        this.category = category;
+    }*/
+
+    public Quote(String textOfQuote, String author, String category) {
         this.textOfQuote = textOfQuote;
         this.author = author;
         this.category = category;
@@ -55,19 +65,19 @@ public class Quote {
         this.addedDate = addedDate;
     }
 
-    public Author getAuthor() {
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(Author author) {
+    public void setAuthor(String author) {
         this.author = author;
     }
 
-    public Category getCategory() {
+    public String getCategory() {
         return category;
     }
 
-    public void setCategory(Category category) {
+    public void setCategory(String category) {
         this.category = category;
     }
 }
