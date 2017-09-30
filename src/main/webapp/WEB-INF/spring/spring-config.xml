@@ -10,6 +10,9 @@
         Т.е. указываем наш основной пакет -->
         <context:component-scan base-package="system"/>
         <mvc:view-controller path="/" view-name="quotas_page"/>
+        <!-- Указываем папку для ресурсов -->
+        <!--<mvc:resources mapping="/resouces/**" location="/resources/"/>-->
+        <!--<mvc:resources mapping="/webjars/**" location="/webjars/"/>-->
 
 
         <bean id="resolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">

@@ -1,5 +1,7 @@
 package system.DAO;
 
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 import system.model.Author;
 import system.model.Category;
@@ -9,9 +11,57 @@ import java.util.Arrays;
 import java.util.List;
 
 @Repository
-public class QuoteDAO {
+public class QuoteDAOImpl implements QuoteDAO{
 
-    private List<Quote> quotesList = Arrays.asList(new Quote("Истинно любит тебя тот, кто втайне молится о тебе Богу.",
+    // TODO нужно добавить логгер - сделай потом
+
+    // SessionFactory for Hibernate
+    private SessionFactory sessionFactory;
+
+    public void setSessionFactory(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    public void addQuote(Quote quote) {
+
+        Session session = this.sessionFactory.getCurrentSession();
+        session.persist(quote);
+    }
+
+    public void updateQuote(Quote quote) {
+
+        Session session = this.sessionFactory.getCurrentSession();
+        session.update(quote);
+    }
+
+    public void removeQuote(int id) {
+
+        Session session = this.sessionFactory.getCurrentSession();
+        Quote quote = (Quote) session.load(Quote.class, new Integer(id));
+
+        if (quote != null) session.delete(quote);
+    }
+
+    public Quote getQuoteById(int id) {
+
+        Session session = this.sessionFactory.getCurrentSession();
+        Quote quote = (Quote) session.load(Quote.class, new Integer(id));
+
+        return quote;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List<Quote> listAllQuotes() {
+
+        Session session = this.sessionFactory.getCurrentSession();
+        List<Quote> quoteList = session.createQuery("from Quote").list();
+
+        return quoteList;
+    }
+
+
+
+    /*private List<Quote> quotesList = Arrays.asList(new Quote("Истинно любит тебя тот, кто втайне молится о тебе Богу.",
                                                             "Николай Сербский",
                                                             "Великие Слова"),
                                                     new Quote("Люди злы в той мере, в какой несчастны.",
@@ -31,6 +81,6 @@ public class QuoteDAO {
     // List all Quotes
     public List<Quote> getListQuotes() {
         return quotesList;
-    }
+    }*/
 
 }

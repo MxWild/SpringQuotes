@@ -1,5 +1,7 @@
 package system.model;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.*;
 import java.util.Date;
 
@@ -8,7 +10,7 @@ import java.util.Date;
 public class Quote {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID")
     private int id;
 
@@ -16,6 +18,7 @@ public class Quote {
     private String textOfQuote;
 
     @Column(name = "ADDED_DATE")
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     private Date addedDate;
 
     // TODO пока делаем стрингами, потом будет объекты
@@ -39,6 +42,7 @@ public class Quote {
         this.textOfQuote = textOfQuote;
         this.author = author;
         this.category = category;
+        this.addedDate = new Date();
     }
 
     public int getId() {

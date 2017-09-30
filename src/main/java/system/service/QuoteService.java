@@ -1,19 +1,24 @@
 package system.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import system.DAO.QuoteDAO;
+import system.model.Quote;
 
 import java.util.List;
 
-@Service
-public class QuoteService {
+public interface QuoteService {
 
-    @Autowired
-    private QuoteDAO quoteDAO;
+    // Add Quote
+    void addQuote(Quote quote);
 
-    public List getAllQuotes() {
-        return quoteDAO.getListQuotes();
-    }
+    // update Quote
+    void updateQuote(Quote quote);
+
+    // remove Qoute
+    void removeQuote(int id);
+
+    // get Quote
+    Quote getQuoteById(int id);
+
+    // get all Quotes
+    List<Quote> listAllQuotes();
 
 }
