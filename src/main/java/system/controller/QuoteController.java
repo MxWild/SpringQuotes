@@ -18,7 +18,8 @@ public class QuoteController {
     private QuoteService quoteService;
 
     @Autowired
-    @Qualifier(value = "QuoteService")
+//    @Qualifier(value = "QuoteService")
+    @Qualifier(value = "quoteService")
     public void setQuoteService(QuoteService quoteService) {
         this.quoteService = quoteService;
     }
