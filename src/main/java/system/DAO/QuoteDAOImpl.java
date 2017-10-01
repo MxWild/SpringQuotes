@@ -3,11 +3,7 @@ package system.DAO;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
-import system.model.Author;
-import system.model.Category;
 import system.model.Quote;
-
-import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -17,6 +13,7 @@ public class QuoteDAOImpl implements QuoteDAO{
 
     // SessionFactory for Hibernate
     private SessionFactory sessionFactory;
+    private Session session;
 
     public void setSessionFactory(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
@@ -24,19 +21,19 @@ public class QuoteDAOImpl implements QuoteDAO{
 
     public void addQuote(Quote quote) {
 
-        Session session = this.sessionFactory.getCurrentSession();
+        session = this.sessionFactory.getCurrentSession();
         session.persist(quote);
     }
 
     public void updateQuote(Quote quote) {
 
-        Session session = this.sessionFactory.getCurrentSession();
+        session = this.sessionFactory.getCurrentSession();
         session.update(quote);
     }
 
     public void removeQuote(int id) {
 
-        Session session = this.sessionFactory.getCurrentSession();
+        session = this.sessionFactory.getCurrentSession();
         Quote quote = (Quote) session.load(Quote.class, new Integer(id));
 
         if (quote != null) session.delete(quote);
@@ -44,7 +41,7 @@ public class QuoteDAOImpl implements QuoteDAO{
 
     public Quote getQuoteById(int id) {
 
-        Session session = this.sessionFactory.getCurrentSession();
+        session = this.sessionFactory.getCurrentSession();
         Quote quote = (Quote) session.load(Quote.class, new Integer(id));
 
         return quote;
@@ -53,7 +50,7 @@ public class QuoteDAOImpl implements QuoteDAO{
     @SuppressWarnings("unchecked")
     public List<Quote> listAllQuotes() {
 
-        Session session = this.sessionFactory.getCurrentSession();
+        session = this.sessionFactory.getCurrentSession();
         List<Quote> quoteList = session.createQuery("from Quote").list();
 
         return quoteList;

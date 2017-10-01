@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import system.model.Quote;
 import system.service.QuoteService;
 
+import java.util.Date;
+
 @Controller
 //@RequestMapping("/quotes")
 public class QuoteController {
@@ -18,7 +20,6 @@ public class QuoteController {
     private QuoteService quoteService;
 
     @Autowired
-//    @Qualifier(value = "QuoteService")
     @Qualifier(value = "quoteService")
     public void setQuoteService(QuoteService quoteService) {
         this.quoteService = quoteService;
@@ -34,7 +35,10 @@ public class QuoteController {
 
     @RequestMapping(value = "/quotes/add", method = RequestMethod.POST)
     public String addQuote(@ModelAttribute("quote") Quote quote) {
-        if (quote.getId() == 0) this.quoteService.addQuote(quote);
+        if (quote.getId() == 0) {
+            quote.setAddedDate(new Date());
+            this.quoteService.addQuote(quote);
+        }
         else this.quoteService.updateQuote(quote);
 
         return "redirect:/quotes";

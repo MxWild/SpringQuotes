@@ -24,7 +24,7 @@
         <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
               destroy-method="close">
                 <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/quotesdb"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/quotesdb?useUnicode=true&amp;characterEncoding=utf8"/>
                 <property name="username" value="userQuote"/>
                 <property name="password" value="a1b2c3d4"/>
         </bean>
