@@ -34,7 +34,7 @@ public class QuoteDAOImpl implements QuoteDAO{
     public void removeQuote(int id) {
 
         session = this.sessionFactory.getCurrentSession();
-        Quote quote = (Quote) session.load(Quote.class, new Integer(id));
+        Quote quote = session.load(Quote.class, new Integer(id));
 
         if (quote != null) session.delete(quote);
     }
@@ -42,7 +42,7 @@ public class QuoteDAOImpl implements QuoteDAO{
     public Quote getQuoteById(int id) {
 
         session = this.sessionFactory.getCurrentSession();
-        Quote quote = (Quote) session.load(Quote.class, new Integer(id));
+        Quote quote = (Quote) session.get(Quote.class, new Integer(id));
 
         return quote;
     }

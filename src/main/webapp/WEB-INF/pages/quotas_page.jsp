@@ -21,7 +21,7 @@
     <h1>Quotes List</h1>
     <hr>
 
-    <a href="<c:url value="/quotes"/>" target="_blank">Quotes List</a>
+    <a href="<c:url value="/quotes"/>">Quotes List</a>
 
     <hr>
 </body>

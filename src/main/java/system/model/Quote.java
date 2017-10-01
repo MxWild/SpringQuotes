@@ -18,7 +18,7 @@ public class Quote {
     private String textOfQuote;
 
     @Column(name = "ADDED_DATE")
-    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm")
     private Date addedDate;
 
     // TODO пока делаем стрингами, потом будет объекты

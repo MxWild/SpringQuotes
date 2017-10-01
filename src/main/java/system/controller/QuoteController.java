@@ -39,13 +39,16 @@ public class QuoteController {
             quote.setAddedDate(new Date());
             this.quoteService.addQuote(quote);
         }
-        else this.quoteService.updateQuote(quote);
+        else {
+            quote.setAddedDate(new Date());
+            this.quoteService.updateQuote(quote);
+        }
 
         return "redirect:/quotes";
     }
 
     @RequestMapping("/remove/{id}")
-    public String removeQuote(@PathVariable("id")  int id){
+    public String removeQuote(@PathVariable("id") int id){
         this.quoteService.removeQuote(id);
 
         return "redirect:/quotes";
@@ -53,13 +56,13 @@ public class QuoteController {
 
     @RequestMapping("/edit/{id}")
     public String editQuote(@PathVariable("id") int id, Model model) {
-        model.addAttribute("Quote", this.quoteService.getQuoteById(id));
+        model.addAttribute("quote", this.quoteService.getQuoteById(id));
         model.addAttribute("listQuotes", this.quoteService.listAllQuotes());
 
         return "quotes";
     }
 
-    @RequestMapping("quotedata/{id}")
+    @RequestMapping("/quotedata/{id}")
     public String quoteData(@PathVariable("id") int id, Model model) {
         model.addAttribute("quote", this.quoteService.getQuoteById(id));
 
