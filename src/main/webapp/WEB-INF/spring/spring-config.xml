@@ -24,15 +24,13 @@
         <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
               destroy-method="close">
                 <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/QUOTESDB"/>
-                <property name="username" value="user"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/quotesdb"/>
+                <property name="username" value="userQuote"/>
                 <property name="password" value="a1b2c3d4"/>
         </bean>
 
         <!-- Hibernate 5 SessionFactory Bean definition -->
-        <bean id="hibernate5AnnotatedSessionFactory"
-              class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
-
+        <bean id="hibernate5AnnotatedSessionFactory" class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
                 <property name="dataSource" ref="dataSource"/>
                 <property name="annotatedClasses">
                         <list>
@@ -41,8 +39,7 @@
                 </property>
                 <property name="hibernateProperties">
                         <props>
-                                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect
-                                </prop>
+                                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
                                 <prop key="hibernate.show_sql">true</prop>
                         </props>
                 </property>
