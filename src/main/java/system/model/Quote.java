@@ -22,8 +22,10 @@ public class Quote {
     private Date addedDate;
 
     // TODO пока делаем стрингами, потом будет объекты
+    @Column(name = "AUTHOR")
     private String author;
 
+    @Column(name = "CATEGORY")
     private String category;
 
     /*private Author author;

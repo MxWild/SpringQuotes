@@ -7,7 +7,7 @@
     <title>Title</title>
 </head>
 <body>
-<a href="/">Back to main</a>
+<a href="quotes.jsp">Back to main</a>
 <br>
 <br>
 
@@ -31,8 +31,8 @@
                 <td>${quote.addedDate}</td>
                 <td>${quote.author}</td>
                 <td>${quote.category}</td>
-                <td><a href="<c:url value='/edit/${quote.id}'/>">">Edit</a></td>
-                <td><a href="<c:url value='/remove/${quote.id}'/>">">Delete</a></td>
+                <td><a href="<c:url value='/edit/${quote.id}'/>">Edit</a></td>
+                <td><a href="<c:url value='/remove/${quote.id}'/>">Delete</a></td>
                 <td></td>
             </tr>
         </c:forEach>
