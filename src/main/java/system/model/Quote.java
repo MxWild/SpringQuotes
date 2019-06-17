@@ -3,11 +3,12 @@ package system.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "QUOTES")
-public class Quote {
+public class Quote implements Serializable{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,6 +19,7 @@ public class Quote {
     private String textOfQuote;
 
     @Column(name = "ADDED_DATE")
+    @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "MM/dd/yyyy HH:mm")
     private Date addedDate;
 

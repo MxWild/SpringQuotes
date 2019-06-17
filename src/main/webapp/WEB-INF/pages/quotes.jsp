@@ -50,7 +50,7 @@
 
     <c:url var="addAction" value="/quotes/add"/>
 
-    <form:form action="${addAction}" commandName="quote" class="form-horizontal">
+    <form:form action="${addAction}" commandName="quote" class="form-vertical">
 
         <c:if test="${!empty quote.textOfQuote}">
             <div class="form-group">
